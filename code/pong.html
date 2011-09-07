@@ -1,0 +1,155 @@
+<html>
+<head>
+<script type="text/javascript" language="javascript" src="jquery.1.2.3.js"></script>
+<script type="text/javascript" language="javascript">
+
+	$(document).ready(function(){pong.init("#pongDiv");});
+	pong = { ph : 40, w : 320, h : 200, PiPi : Math.PI * 2, HaPi : Math.PI / 2, PiHa : Math.PI * 1.5,active : true, robotmask : 3,
+			 paddles : [ ],
+			 $ball	 : null, $pong   : null, $scores : null,
+			 keymask : 0, scores : [0,0],
+			 init    : function(o){
+				this.$pong = $(o);
+				this.w = this.$pong.width();
+				this.h = this.$pong.height();
+				for(var i=0;i<2;i++){
+					this.paddles.push($("<div style=\"position:absolute; top: 0px; width: 4px; height: " + this.ph + "px; " + (i == 0 ? "left" : "right" ) + ": 0px; background:black;\"></div>").appendTo(this.$pong));
+					this.paddles[i][0].f = (i * -1) * 10;
+					this.paddles[i][0].d = (i * -1) * 90;
+					this.paddles[i][0].y = 0;
+				}
+				this.$ball = $("<div style=\"width: 16px; height:16px; background: red; position: absolute; top: 10px; left:160px;\"></div>").appendTo(this.$pong);
+				this.$scores = $("<div style=\"position: absolute; top: 0px; left:0px; width: " + this.w + "px; text-align:center;\"><span></span></div>").appendTo(this.$pong);
+				$(document).bind("keydown", pong.key).bind("keyup", pong.key);			
+				setTimeout("pong.reset()",100);
+			 },
+			 reset : function(){
+			 	this.$ball[0].f = Math.random() * 40 + 10;
+				this.$ball[0].d = (Math.random() * this.HaPi) + (this.HaPi /3);
+				this.$ball[0].x = 160;
+				this.$ball[0].y = 100;
+				this.$ball.css({ top : 100, left: 160});
+				this.$scores.find("span").html( this.scores[0] + " : " + this.scores[1]);
+				this.active = true;
+				if(this.robotmask > 0) setTimeout("pong.robots()", 350);
+				setTimeout("pong.animate()",100);				
+			 },
+			 key : function(e){
+				switch(e.keyCode){
+					case 38:
+						pong.keymask ^= 1;
+					break;
+					case 40:
+						pong.keymask ^= 2;
+					break;
+					case 87:
+						pong.keymask ^= 4;
+					break;
+					case 83:
+						pong.keymask ^= 8;
+					break;
+				}
+			 },
+			 //sohcahtoa
+			 yf : function(d,f){ return Math.sin(d) * f; },
+			 xf : function(d,f){ return Math.cos(d) * f; },
+			 reflect : function(d, p){ // East is zero radians
+				while(d > this.PiPi) d -= this.PiPi;
+				while(d < 0) d += this.PiPi;
+				return (Math.PI + p - d) + p;
+			 },
+			 chkPaddle : function(by,py){
+				bb = by + 16;
+				pb = py + this.ph;
+				if( (bb >= py && bb <= pb) || (by <= pb && by >= py ))
+					return true;
+				return false;
+			 },
+			 robots : function(){
+				if(!this.active) return;
+				if(this.robotmask & 2){ // player two
+					var ty = Math.max(0, Math.tan(this.$ball[0].d) * (this.w - this.$ball[0].x)) + this.$ball[0].y;
+					// clear the keymask
+					if(this.keymask & 4) this.keymask ^= 4;
+					if(this.keymask & 8) this.keymask ^= 8;
+					if(ty < this.paddles[1][0].y) this.keymask ^= 4;
+					if(ty > this.paddles[1][0].y) this.keymask ^= 8;
+				}
+				if(this.robotmask & 1){ // player two
+					var ty = Math.max(0, -1 * Math.tan(this.$ball[0].d) * (this.$ball[0].x)) + this.$ball[0].y;
+					// clear the keymask
+					if(this.keymask & 1) this.keymask ^= 1;
+					if(this.keymask & 2) this.keymask ^= 2;
+					if(ty < this.paddles[0][0].y) this.keymask ^= 1;
+					if(ty > this.paddles[0][0].y) this.keymask ^= 2;
+				}
+				setTimeout("pong.robots();", 250);
+			 },
+			 animate : function(){
+				pad1y = this.paddles[0][0].y;
+				pad2y = this.paddles[1][0].y;
+				// handle key movements
+			    if(this.keymask & 1){ // player 1 up
+					pad1y = Math.max(0,pad1y - 8)
+				}
+				if(this.keymask & 2){ // player 1 down
+					pad1y = Math.min(this.h - this.ph, pad1y + 8);
+				}
+				this.paddles[0][0].y = pad1y;
+				this.paddles[0].animate({ top : pad1y}, 50);
+
+			    if(this.keymask & 4){ // player 2 up
+					pad2y = Math.max(0,pad2y - 8)
+				}
+				if(this.keymask & 8){ // player 1 down
+					pad2y = Math.min(this.h - this.ph, pad2y + 8);
+				}
+				this.paddles[1][0].y = pad2y;
+				this.paddles[1].animate({ top : pad2y}, 50);
+			 
+				var fx = this.xf( this.$ball[0].d, this.$ball[0].f);
+				var fy = this.yf( this.$ball[0].d, this.$ball[0].f);
+				var nx = this.$ball[0].x + fx;
+				var ny = this.$ball[0].y + fy;
+				if(ny < 0){
+						ny = 0;
+						this.$ball[0].d = this.reflect(this.$ball[0].d, this.HaPi);
+					}
+				if(ny > (this.h - 16)){
+						ny = this.h -16;
+						this.$ball[0].d = this.reflect(this.$ball[0].d, this.PiHa);
+					}
+					
+				if(nx < 4 && this.chkPaddle(ny, this.paddles[0][0].y)){
+					nx = 4;
+					this.$ball[0].d = this.reflect(this.$ball[0].d, 0);
+				}else if(nx > (this.w-20) && this.chkPaddle(ny, this.paddles[1][0].y) ){	
+					nx = this.w - 20;
+					this.$ball[0].d = this.reflect(this.$ball[0].d, this.PiPi);
+				}else if(nx < -20){
+					nx = -20;
+					this.scores[1]++;
+					this.active = false;
+					setTimeout("pong.reset()", 1000);
+				}else if(nx > (this.w+20)){
+					nx = this.w + 20;
+					this.scores[0]++;
+					this.active = false;
+					setTimeout("pong.reset()", 1000);
+					}
+				
+				while(this.$ball[0].d > this.PiPi) this.$ball[0].d -= this.PiPi;
+				while(this.$ball[0].d < 0) this.$ball[0].d += this.PiPi;
+				this.$ball[0].x = nx;
+				this.$ball[0].y = ny;
+				this.$ball.animate({'left' : nx, 'top' : ny },100, function(){if(pong.active)pong.animate();});
+			 }
+	};
+	
+</script>
+</head>
+<body>
+<div id="pongDiv" style="border: 1px solid black; width: 320px; height: 200px; position:absolute; overflow:hidden;"></div>
+</body>
+</html>
+
