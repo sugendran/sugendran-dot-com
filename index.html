@@ -5,55 +5,10 @@
     <title>All about Sugendran</title>
     <link rel="stylesheet" type="text/css" href="styles/screen.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        (function(window, document, $) {
-            var winHeight = 100, halfHeight = 50, pixelsPerDegree = 1.8, halfWidth = 100;
-            var titleWidth = 400, titleMaxLeft = 400, titleHeight = 100;
-            var docElem = document.documentElement;
-            var canTransform = typeof(docElem.style.webkitTransform) != "undefined" || typeof(docElem.style.    MozTransform) != "undefined" || typeof(docElem.style.transform) != "undefined";
-            function onResize() {
-                winHeight = $(window).height();
-                halfHeight = (winHeight * 0.5);
-                halfWidth= $(window).width() * 0.5;
-                var titleElem = $("#title");
-                titleWidth = titleElem.width();
-                titleHeight = titleElem.height();
-                titleMaxLeft = (halfWidth - (titleWidth * 0.5));
-                pixelsPerDegree = 90 / halfHeight;
-                $("div.panel.main")
-                    .css("minHeight", winHeight + "px")
-                    .children("div.menu").css("margin-top", halfHeight - 42 + "px");
-                titleElem.css({ 
-                    "bottom": (halfHeight + 64) + "px",
-                    "left": titleMaxLeft + "px"
-                });
-            }
-            function onScroll() {
-                var offset = $(document).scrollTop();
-                if(!canTransform) return;
-                var angle = Math.max(0 - (offset * pixelsPerDegree), -90);
-                var anglePercent = (angle / -90);
-                var anglePercentInverse = 1 - anglePercent;
-                var left = titleMaxLeft * anglePercentInverse - titleHeight * anglePercent;
-                var rotation = "rotate(" + angle + "deg)";
-                $("#title").css({
-                    "-webkit-transform": rotation,
-                    "-moz-transform": rotation,
-                    "transform": rotation,
-                    "left": left + "px"
-                });
-            }
-            $(window).resize(onResize);
-            $(document).scroll(onScroll);
-            $(function() {
-                if(!canTransform) {
-                    $("#title").css("display", "absolute");
-                }
-                onResize();
-                onScroll();
-            });
-        })(window, document, jQuery);
-    </script>
+    <link rel="stylesheet" href="scripts/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="scripts/fancybox/jquery.fancybox.pack.js?v=2.1.4"></script>
+
+    <script src="scripts/main.js"></script>
 </head>
 <body>
     <h1 class="title" id="title">Sugendran</h1>
@@ -83,9 +38,15 @@
                 <dd class="title">Tipple</dd>
                 <dt class="screenshots"><dt>
                 <dd class="screenshots" style="width:518px">
-                    <img src="images/tipple-1.jpeg" alt="Add drink screen"  width="160" height="240" />
-                    <img src="images/tipple-2.jpeg" alt="Overlimit screen"  width="160" height="240" />
-                    <img src="images/tipple-3.jpeg" alt="History screen"  width="160" height="240" />
+                    <a href="images/tipple-1.jpeg" rel="tipple" target="_blank">
+                        <img src="images/tipple-1.jpeg" alt="Add drink screen"  width="160" height="240" />
+                    </a>
+                    <a href="images/tipple-2.jpeg" rel="tipple" target="_blank">
+                        <img src="images/tipple-2.jpeg" alt="Overlimit screen"  width="160" height="240" />
+                    </a>
+                    <a href="images/tipple-3.jpeg" rel="tipple" target="_blank">
+                        <img src="images/tipple-3.jpeg" alt="History screen"  width="160" height="240" />
+                    </a>
                 </dd>
                 <dt class="description">Description</dt>
                 <dd class="description">Tipple helps you moderate and measure your drinking by keeping track of how many units you drink. The application is written in Objective-C and is backed by a sqlite database. It features drink history, along with nice pie charts of your drinking history.</dd>
@@ -99,7 +60,9 @@
                 <dd class="title">What the Dickens</dd>
                 <dt class="screenshots"><dt>
                 <dd class="screenshots" style="width:250px">
-                    <img src="images/what-the-dickens-1.jpeg" alt="Sample game screen"  width="240" height="180" />
+                    <a href="images/what-the-dickens-1.jpeg" target="_blank">
+                        <img src="images/what-the-dickens-1.jpeg" alt="Sample game screen"  width="240" height="180" />
+                    </a>
                 </dd>
                 <dt class="description">Description</dt>
                 <dd class="description">What the dickens is an anagram game. All words come from novels by Charles Dickens. The game is simple, just solve as many anagrams as you can in three minutes. Each word has a score based on how frequently the word appears in the novels. The more infrequent the word, the higher the score. This game has been made with UIKit.</dd>
@@ -113,8 +76,12 @@
                 <dd class="title">Bilingual Baby</dd>
                 <dt class="screenshots"><dt>
                 <dd class="screenshots" style="width:510px">
-                    <img src="images/bb-2.jpeg" alt="Sample game screen"  width="240" height="135" />
-                    <img src="images/bb-1.jpeg" alt="Sample game screen"  width="240" height="135" />
+                    <a href="images/bb-2.jpeg" rel="bb" target="_blank">
+                        <img src="images/bb-2.jpeg" alt="Sample game screen"  width="240" height="135" />
+                    </a>
+                    <a href="images/bb-1.jpeg" rel="bb" target="_blank">
+                        <img src="images/bb-1.jpeg" alt="Sample game screen"  width="240" height="135" />
+                    </a>
                 </dd>
                 <dt class="description">Description</dt>
                 <dd class="description">Bilingual Baby is a flashcard application designed to help toddlers learn vocabulary in foreign languages. The application is a collaboration with the Designers at Shift Interactive. It is written in Objective-C and backed by sqlite.</dd>
