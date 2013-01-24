@@ -2,17 +2,557 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>A new website by Sugendran is coming soon</title>
-    <meta name="robots" content="noindex">
-    <style type="text/css">
-        html,body
-        {
-            background: #000;
-            text-align: center;
-        }
-    </style>
+    <title>All about Sugendran</title>
+    <link rel="stylesheet" type="text/css" href="styles/screen.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function(window, document, $) {
+            var winHeight = 100, halfHeight = 50, pixelsPerDegree = 1.8, halfWidth = 100;
+            var titleWidth = 400, titleMaxLeft = 400, titleHeight = 100;
+            var docElem = document.documentElement;
+            var canTransform = typeof(docElem.style.webkitTransform) != "undefined" || typeof(docElem.style.    MozTransform) != "undefined" || typeof(docElem.style.transform) != "undefined";
+            function onResize() {
+                winHeight = $(window).height();
+                halfHeight = (winHeight * 0.5);
+                halfWidth= $(window).width() * 0.5;
+                var titleElem = $("#title");
+                titleWidth = titleElem.width();
+                titleHeight = titleElem.height();
+                titleMaxLeft = (halfWidth - (titleWidth * 0.5));
+                pixelsPerDegree = 90 / halfHeight;
+                $("div.panel.main")
+                    .css("minHeight", winHeight + "px")
+                    .children("div.menu").css("margin-top", halfHeight - 42 + "px");
+                titleElem.css({ 
+                    "bottom": (halfHeight + 64) + "px",
+                    "left": titleMaxLeft + "px"
+                });
+            }
+            function onScroll() {
+                var offset = $(document).scrollTop();
+                if(!canTransform) return;
+                var angle = Math.max(0 - (offset * pixelsPerDegree), -90);
+                var anglePercent = (angle / -90);
+                var anglePercentInverse = 1 - anglePercent;
+                var left = titleMaxLeft * anglePercentInverse - titleHeight * anglePercent;
+                var rotation = "rotate(" + angle + "deg)";
+                $("#title").css({
+                    "-webkit-transform": rotation,
+                    "-moz-transform": rotation,
+                    "transform": rotation,
+                    "left": left + "px"
+                });
+            }
+            $(window).resize(onResize);
+            $(document).scroll(onScroll);
+            $(function() {
+                if(!canTransform) {
+                    $("#title").css("display", "absolute");
+                }
+                onResize();
+                onScroll();
+            });
+        })(window, document, jQuery);
+    </script>
 </head>
 <body>
-    <img src="coming-soon.png" alt="Website Coming Soon" />
+    <h1 class="title" id="title">Sugendran</h1>
+    <div class="panel main">
+        <div class="menu">
+            <a href="http://twitter.com/sugendran" title="Follow Sugendran on Twitter" class="twitter">
+                <span>Follow Sugendran on Twitter</span>
+            </a>
+            <a href="http://au.linkedin.com/in/sugendran" title="Sugendran on LinkedIn" class="linkedin">
+                <span>Sugendran on LinkedIn</span>
+            </a>
+            <a href="http://www.abandonedexpression.com" title="Read Sugendran's Blog" class="blog">
+                <span>Read Sugendran's Blog</span>
+            </a>
+            <a href="mailto://sugendran@sugendran.net" title="Email Sugendran" class="email">
+                <span>Email Sugendran</span>
+            </a>
+        </div>
+    </div>
+    <div class="panel apps">
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
+                <dd class="title">Tipple</dd>
+                <dt class="screenshots"><dt>
+                <dd class="screenshots" style="width:518px">
+                    <img src="images/tipple-1.jpeg" alt="Add drink screen"  width="160" height="240" />
+                    <img src="images/tipple-2.jpeg" alt="Overlimit screen"  width="160" height="240" />
+                    <img src="images/tipple-3.jpeg" alt="History screen"  width="160" height="240" />
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">Tipple helps you moderate and measure your drinking by keeping track of how many units you drink. The application is written in Objective-C and is backed by a sqlite database. It features drink history, along with nice pie charts of your drinking history.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="https://itunes.apple.com/au/app/tipple-alcohol-tracker/id479124591?mt=8"><img src="images/available_on_app_store.png" alt="Available on the App Store" /></a></dd>
+            </dl>
+        </div>
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
+                <dd class="title">What the Dickens</dd>
+                <dt class="screenshots"><dt>
+                <dd class="screenshots" style="width:250px">
+                    <img src="images/what-the-dickens-1.jpeg" alt="Sample game screen"  width="240" height="180" />
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">What the dickens is an anagram game. All words come from novels by Charles Dickens. The game is simple, just solve as many anagrams as you can in three minutes. Each word has a score based on how frequently the word appears in the novels. The more infrequent the word, the higher the score. This game has been made with UIKit.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="https://itunes.apple.com/au/app/what-the-dickens/id553175705?mt=8"><img src="images/available_on_app_store.png" alt="Available on the App Store" /></a></dd>
+            </dl>
+        </div>
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
+                <dd class="title">Bilingual Baby</dd>
+                <dt class="screenshots"><dt>
+                <dd class="screenshots" style="width:510px">
+                    <img src="images/bb-2.jpeg" alt="Sample game screen"  width="240" height="135" />
+                    <img src="images/bb-1.jpeg" alt="Sample game screen"  width="240" height="135" />
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">Bilingual Baby is a flashcard application designed to help toddlers learn vocabulary in foreign languages. The application is a collaboration with the Designers at Shift Interactive. It is written in Objective-C and backed by sqlite.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="https://itunes.apple.com/us/app/bilingual-baby-flash-cards/id507280005?mt=8"><img src="images/available_on_app_store.png" alt="Available on the App Store" /></a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="panel jobs">
+        <div class="job">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    Node.js Junkie / Objective-C Nut 
+                </dd>
+                <dd class="title">
+                    Senior Software Engineer
+                </dd>
+                <dt class="company">
+                    Company
+                </dt>
+                <dd class="companyx">
+                    Alphashack
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    January 2012 - Current
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    Sydney
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        Alphashack is an incubator for products, which has suited my full stack
+                        skills. The primary product that I work on is Graphdat, a real time server and application visualisation platform. This product has had many challenges involved in scaling the system to deal with lots of data coming and at the same serving aggregates in real time. Working in a small team I've worked across the whole stack jumping into code as needed. The product is fully functional and can be seen at http://www.graphdat.com
+                    </p>
+                </dd>
+                <dt class="keywords">
+                    Keywords
+                </dt>
+                <dd class="keywords">
+                    <span class="keywords">
+                        nodejs
+                    </span>
+                    <span class="keywords">
+                        Objective-C
+                    </span>
+                    <span class="keywords">
+                        iOS
+                    </span>
+                    <span class="keywords">
+                        Javascript
+                    </span>
+                    <span class="keywords">
+                        PHP
+                    </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="job">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    Technical Lead
+                </dd>
+                <dd class="title">
+                    Senior Software Engineer
+                </dd>
+                <dt class="company">
+                    Company
+                </dt>
+                <dd class="companyx">
+                    Digital Five Sydney
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    Febrary 2011 - December 2011
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    Sydney
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        The product I worked on in this position was the iOS (iPhone and iPad)
+                        remote for the fetchtv set-top box. The application uses a comet system
+                        to communicate to the set-top box, some of the trickier aspects of this
+                        was ensuring that the communication would work outside the home over 3G
+                        as well as on WiFi indoors. We initial produced a prototype using sencha-touch
+                        but then elected to write in native Objective-C so that we could get as
+                        much performance as possible. My role had me doing most of the low level
+                        communications and API creation for use by the rest of the team.
+                    </p>
+                </dd>
+                <dt class="keywords">
+                    Keywords
+                </dt>
+                <dd class="keywords">
+                    <span class="keywords">
+                        C#
+                    </span>
+                    <span class="keywords">
+                        Objective-C
+                    </span>
+                    <span class="keywords">
+                        iOS
+                    </span>
+                    <span class="keywords">
+                        sencha-touch
+                    </span>
+                    <span class="keywords">
+                        Javascript
+                    </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="job">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    Solution Architect
+                </dd>
+                <dt class="company">
+                    Company
+                </dt>
+                <dd class="companyx">
+                    Viocorp
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    January 2010 - February 2011
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    Sydney
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        As a solution architect I was responsible for the translation of business
+                        requirements into functional requirements for the development team. It
+                        was my responsibility to ensure that the various products of the company
+                        meshed well together and that the appropriate technologies were used. As
+                        well as filling the role of solution architect I was also the team leader
+                        for the Viostream product team. The Viostream platform is the video streaming
+                        and asset management offering from Viocorp. I was required to both design
+                        and develop features for this platform to suit the needs of Viocorp’s clients.
+                    </p>
+                    <p>
+                        Amongst my accomplishments in this position, I filled in as team lead
+                        for the Viomedia Product team for the development of a catch-up TV solution
+                        for Malaysia’s largest broadcaster. This proved to be an incredibly difficult
+                        task as I was required to take an existing CMS and rework it to suit the
+                        catch - up TV requirements. The project was finished on time and has since
+                        changed the browsing habits for the viewers of the client.
+                    </p>
+                </dd>
+                <dt class="keywords">
+                    Keywords
+                </dt>
+                <dd class="keywords">
+                    <span class="keywords">
+                        C#
+                    </span>
+                    <span class="keywords">
+                        Javascript
+                    </span>
+                    <span class="keywords">
+                        Akamai
+                    </span>
+                    <span class="keywords">
+                        CSS
+                    </span>
+                    <span class="keywords">
+                        jQuery
+                    </span>
+                    <span class="keywords">
+                        ASP.NET
+                    </span>
+                    <span class="keywords">
+                        IPTV
+                    </span>
+                    <span class="keywords">
+                        Flash Media Server
+                    </span>
+                    <span class="keywords">
+                        Live Video Streaming
+                    </span>
+                    <span class="keywords">
+                        Internet TV
+                    </span>
+                    <span class="keywords">
+                        PHP
+                    </span>
+                    <span class="keywords">
+                        CMS
+                    </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="job">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    .NET Developer
+                </dd>
+                <dt class="company">
+                    Company
+                </dt>
+                <dd class="companyx">
+                    Viocorp
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    August 2008 - December 2009
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    Sydney
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        As a .NET developer my primary job was to build and skin video portals
+                        for major banking institutions, national tourism bodies and large multinationals.
+                        I worked to tight deadlines to create an individual look and feel to each
+                        client’s video portal.
+                    </p>
+                    <p>
+                        In additional to building and skinning video portals I rebuilt the interface
+                        to the core management system used for managing client media. This involved
+                        rethinking the usability of the existing system and introducing a “Web
+                        2.0” feel to the site . In the space of three months the entire interface
+                        and workflow for clients was reinvented.
+                    </p>
+                    <p>
+                        My major accomplishment was a Javascript embed framework that that supports
+                        the embedding of Adobe Flash, Windows Media and Apple Quicktime content
+                        onto a site whilst allowing the user to change between formats. The framework
+                        is completely encapsulated and does not make use of any other Javascript
+                        library. The system makes use of a degrading tag system that allows for
+                        the embed system to also be used in an AJAX environment . The end result
+                        was that clients could paste an embed code into their CMS and serve online
+                        video to their viewers regardless of platform.
+                    </p>
+                </dd>
+                <dt class="keywords">
+                    Keywords
+                </dt>
+                <dd class="keywords">
+                    <span class="keywords">
+                        C#
+                    </span>
+                    <span class="keywords">
+                        ASP.NET
+                    </span>
+                    <span class="keywords">
+                        jQuery
+                    </span>
+                    <span class="keywords">
+                        Javascript
+                    </span>
+                    <span class="keywords">
+                        CSS
+                    </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="job">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    Associate Software Engineer
+                </dd>
+                <dt class="company">
+                    Company
+                </dt>
+                <dd class="companyx">
+                    Moody's Economy.com
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    July 2007 - July 2008
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    West Chester, PA, USA
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        I was offered the position of associate software engineer in the US office
+                        and spent a year working on various projects. I spent a significant amount
+                        of time converting old ASP applications into ASP.NET in order to better
+                        meet changing business needs. An example of this was a generic document
+                        templating system that I built using XML and Xquery to replace the existing
+                        Knowledge Base system. The document layout and submitted data was stored
+                        in XML. On rendering Xquery methods were used to select and update the
+                        information stored in SQL.
+                    </p>
+                    <p>
+                        I was also part of the team that rebuilt DataBuffet.com from the ground
+                        up. Using a C# for the backend, and jQuery for the frontend, we created
+                        a responsive, robust chart and mapping tool for use with the company's
+                        data warehouse (FAME). For this project I wrote various jQuery plugins
+                        to streamline the frontend processes. On the backend various VB6, C++ and
+                        SQL pieces of code had to be rewritten. The project included creating webservices
+                        to store your own data, so that you could use the tools to chart and/or
+                        map your data against other economic data.
+                    </p>
+                    <p>
+                        Possibly the toughest project I undertook was adding a coupon to the existing
+                        shopping cart system. Due to the nature of the existing system I had to
+                        graft the coupon system using only SQL. This involved building all the
+                        pieces and slowly moving them into the live system so that there wouldn't
+                        be any disruption to service. This was tricky because of the system had
+                        been written over 10 years prior. At the end of it the company ended up
+                        with a robust coupons system that allowed for everything from bundles to
+                        bulk discounts.
+                    </p>
+                </dd>
+                <dt class="keywords">
+                    Keywords
+                </dt>
+                <dd class="keywords">
+                    <span class="keywords">
+                        C#
+                    </span>
+                    <span class="keywords">
+                        ASP.NET
+                    </span>
+                    <span class="keywords">
+                        jQuery
+                    </span>
+                    <span class="keywords">
+                        VBA
+                    </span>
+                    <span class="keywords">
+                        SQL Server
+                    </span>
+                    <span class="keywords">
+                        FAME Database
+                    </span>
+                    <span class="keywords">
+                        Javascript
+                    </span>
+                    <span class="keywords">
+                        XQuery
+                    </span>
+                    <span class="keywords">
+                        XML
+                    </span>
+                    <span class="keywords">
+                        XSLT
+                    </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="panel educations">
+        <div class="education">
+            <dl>
+                <dt class="title">
+                    Title
+                </dt>
+                <dd class="title">
+                    Bachelor of Business
+                </dd>
+                <dt class="date">
+                    Date
+                </dt>
+                <dd class="date">
+                    2004
+                </dd>
+                <dt class="company">
+                    University
+                </dt>
+                <dd class="company">
+                    University of Technology Sydney
+                </dd>
+                <dt class="location">
+                    Location
+                </dt>
+                <dd class="location">
+                    Sydney, Australia
+                </dd>
+                <dt class="description">
+                    Description
+                </dt>
+                <dd class="description">
+                    <p>
+                        Finance Major with sub-majors in Economics and Information Technology.
+                        One semester was spent on exchange in the Netherlands at Erasmus University
+                        Rotterdam
+                    </p>
+                </dd>
+            </dl>
+        </div>
+    </div>
 </body>
 </html>
