@@ -17,7 +17,7 @@ div.panel div.menu
 {
 	text-align: center;
 	margin: auto;
-	width: 74px;
+	width: 120px;
 	height: 74px;
 }
 div.panel div.menu a
@@ -46,6 +46,10 @@ div.panel div.menu a.blog
 div.panel div.menu a.email
 {
     background: transparent url(../images/email.png) no-repeat 50% 50%;    
+}
+div.panel div.menu a.github
+{
+    background: transparent url(../images/github.png) no-repeat 50% 50%;    
 }
 div.panel.jobs,
 div.panel.educations
