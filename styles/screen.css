@@ -4,10 +4,32 @@ html,body {
     margin:0px;
     font-family: Helvetica, sans-serif;
 }
+a {
+	color: #AAF;
+}
+a:hover {
+	color: #FAA;
+}
 h1.title {
     font-size: 4em;
     text-align: center;
     position: fixed;
+}
+h2.panel-header {
+	font-size: 3em;
+	text-align: right;
+	margin-right: 1.34em;
+	margin-bottom: 1em;
+	color: #FFF;
+	-webkit-text-stroke-color: #CDCDCD;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-fill-color: #202020;
+	-moz-text-stroke-color: #CDCDCD;
+	-moz-text-stroke-width: 1px;
+	-moz-text-fill-color: #202020;
+	text-stroke-color: #CDCDCD;
+	text-stroke-width: 1px;
+	text-fill-color: #202020;
 }
 div.panel {
     display: block;
@@ -64,7 +86,11 @@ div.panel.apps div.app
 	position: relative;
 	/*display: inline-block;*/
 	padding-bottom: 4em;
-	min-height: 260px;
+	min-height: 300px;
+}
+div.panel.apps div.app dd.description 
+{
+	margin-top: 1em;
 }
 div.panel.jobs div.job, 
 div.panel.educations div.education
@@ -118,6 +144,7 @@ dd.screenshots
 {
 	position: absolute;
 	right: 620px;
+	text-align: right;
 }
 dd.screenshots img
 {

@@ -5,7 +5,7 @@
     <title>All about Sugendran</title>
     <link rel="stylesheet" type="text/css" href="styles/screen.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="scripts/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <link rel="stylesheet" href="scripts/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" />
     <script type="text/javascript" src="scripts/fancybox/jquery.fancybox.pack.js?v=2.1.4"></script>
 
     <script src="scripts/main.js"></script>
@@ -31,13 +31,14 @@
             </a>
         </div>
     </div>
+    <h2 class="panel-header">Apps and Things</h2>
     <div class="panel apps">
         <div class="app">
             <dl>
                 <dt class="title">Title</dt>
                 <dd class="title">Tipple</dd>
-                <dt class="screenshots"><dt>
-                <dd class="screenshots" style="width:518px">
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:540px">
                     <a href="images/tipple-1.jpeg" rel="tipple" target="_blank">
                         <img src="images/tipple-1.jpeg" alt="Add drink screen"  width="160" height="240" />
                     </a>
@@ -58,7 +59,7 @@
             <dl>
                 <dt class="title">Title</dt>
                 <dd class="title">What the Dickens</dd>
-                <dt class="screenshots"><dt>
+                <dt class="screenshots">Screenshots<dt>
                 <dd class="screenshots" style="width:250px">
                     <a href="images/what-the-dickens-1.jpeg" target="_blank">
                         <img src="images/what-the-dickens-1.jpeg" alt="Sample game screen"  width="240" height="180" />
@@ -73,9 +74,31 @@
         <div class="app">
             <dl>
                 <dt class="title">Title</dt>
+                <dd class="title">Loyalty Wallet</dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:520px">
+                    <a href="images/loyalty-wallet-1.jpeg" rel="loyalty" target="_blank">
+                        <img src="images/loyalty-wallet-1.jpeg" alt="List of cards screen"  width="160" height="240" />
+                    </a>
+                    <a href="images/loyalty-wallet-2.jpeg" rel="loyalty" target="_blank">
+                        <img src="images/loyalty-wallet-2.jpeg" alt="Enter new card screen"  width="160" height="240" />
+                    </a>
+                    <a href="images/loyalty-wallet-3.jpeg" rel="loyalty" target="_blank">
+                        <img src="images/loyalty-wallet-3.jpeg" alt="Display barcode screen"  width="160" height="240" />
+                    </a>
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">Loyalty Wallet is a simple app to help reduce the number of loyalty cards you carry around. It uses a barcode recognizer to input the barcode and then display it back. The app is written in Objective C and backed with a sqlite database.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="https://itunes.apple.com/ua/app/loyalty-wallet/id477635156?mt=8"><img src="images/available_on_app_store.png" alt="Available on the App Store" /></a></dd>
+            </dl>
+        </div> 
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
                 <dd class="title">Bilingual Baby</dd>
-                <dt class="screenshots"><dt>
-                <dd class="screenshots" style="width:510px">
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:550px">
                     <a href="images/bb-2.jpeg" rel="bb" target="_blank">
                         <img src="images/bb-2.jpeg" alt="Sample game screen"  width="240" height="135" />
                     </a>
@@ -89,7 +112,41 @@
                 <dd class="link"><a href="https://itunes.apple.com/us/app/bilingual-baby-flash-cards/id507280005?mt=8"><img src="images/available_on_app_store.png" alt="Available on the App Store" /></a></dd>
             </dl>
         </div>
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
+                <dd class="title">msgpack visualizer</dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:550px">
+                    <a href="images/msgpackvis.png" rel="msgpack" target="_blank">
+                        <img src="images/msgpackvis.png" alt="MSGPack Visualizer"  width="425" height="145" />
+                    </a>
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">The msgpack visualizer is a tool to help debug problems with messages that have been encoded using the msgpack serialisation protocol. It decodes a base64 string and presents it as a JSON object. As well as presenting it as a JSON object it also prints out which bytes correspond to which data type and value. It is written in Javascript so that it can be easily used from a web browser.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="http://sugendran.github.com/msgpack-visualizer/">Hosted on GitHub</a></dd>
+            </dl>
+        </div>
+        <div class="app">
+            <dl>
+                <dt class="title">Title</dt>
+                <dd class="title">Ski Gratis</dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:550px">
+                    <a href="images/skigratis.png" rel="skigratis" target="_blank">
+                        <img src="images/skigratis.png" alt="Game Screen"  width="358" height="280" />
+                    </a>
+                </dd>
+                <dt class="description">Description</dt>
+                <dd class="description">Ski Gratis was written as part of a talk given to the Sydney Javascript community. The talk covered making a SkiFree clone using CreateJS - a library for HTML Canvas and other related things. The game is playable online and has so far been submitted as a Windows Metro application.</dd>
+                <dt class="link">Links></dt>
+                <dd class="link"><a href="http://sugendran.github.com/ski-gratis/">Playable demo on GitHub</a></dd>
+                <dd class="link"><a href="http://sugendran.github.com/ski-gratis/">Playable demo on GitHub</a></dd>
+            </dl>
+        </div>
     </div>
+    <h2 class="panel-header">Work Experience</h2>
     <div class="panel jobs">
         <div class="job">
             <dl>
@@ -101,6 +158,12 @@
                 </dd>
                 <dd class="title">
                     Senior Software Engineer
+                </dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:350px">
+                    <a href="images/graphdat.png" target="_blank">
+                        <img src="images/graphdat.png" alt="Graphdat screenshot"  width="315" height="214" />
+                    </a>
                 </dd>
                 <dt class="company">
                     Company
@@ -126,7 +189,7 @@
                 <dd class="description">
                     <p>
                         Alphashack is an incubator for products, which has suited my full stack
-                        skills. The primary product that I work on is Graphdat, a real time server and application visualisation platform. This product has had many challenges involved in scaling the system to deal with lots of data coming and at the same serving aggregates in real time. Working in a small team I've worked across the whole stack jumping into code as needed. The product is fully functional and can be seen at http://www.graphdat.com
+                        skills. The primary product that I work on is Graphdat, a real time server and application visualisation platform. This product has had many challenges involving scaling the system to deal with lots of data coming and at the same serving aggregates in real time. Working in a small team I've worked across the whole stack jumping into code as needed. The product is fully functional and can be seen at http://www.graphdat.com
                     </p>
                 </dd>
                 <dt class="keywords">
@@ -161,6 +224,15 @@
                 </dd>
                 <dd class="title">
                     Senior Software Engineer
+                </dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:400px">
+                    <a href="images/fetchtv-1.jpeg" target="_blank">
+                        <img src="images/fetchtv-1.jpeg" alt="Fetchtv screenshot"  width="240" height="180" />
+                    </a>
+                    <a href="images/fetchtv-2.jpeg" target="_blank">
+                        <img src="images/fetchtv-2.jpeg" alt="Fetchtv screenshot"  width="101" height="180" />
+                    </a>
                 </dd>
                 <dt class="company">
                     Company
@@ -224,6 +296,12 @@
                 </dt>
                 <dd class="title">
                     Solution Architect
+                </dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:450px">
+                    <a href="images/tonton.png" target="_blank">
+                        <img src="images/tonton.png" alt="Tonton screenshot"  width="436" height="280" />
+                    </a>
                 </dd>
                 <dt class="company">
                     Company
@@ -316,6 +394,12 @@
                 </dt>
                 <dd class="title">
                     .NET Developer
+                </dd>
+                <dt class="screenshots">Screenshots<dt>
+                <dd class="screenshots" style="width:370px">
+                    <a href="images/viostream-media-player.png" target="_blank">
+                        <img src="images/viostream-media-player.png" alt="Viostream Enhanced Media Player screenshot"  width="358" height="240" />
+                    </a>
                 </dd>
                 <dt class="company">
                     Company
@@ -524,5 +608,11 @@
             </dl>
         </div>
     </div>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-943980-5']);
+        _gaq.push(['_trackPageview']);
+    </script>
+    <script src="http://www.google-analytics/ga.js"></script>
 </body>
 </html>
