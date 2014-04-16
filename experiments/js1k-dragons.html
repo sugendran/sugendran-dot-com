@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JS1k, [COMPO] demo submission [ID]</title>
+    <meta charset="utf-8" />
+    <style>
+      html, body { margin: 0; padding: 0; border: 0; }
+      #c { display: block; } /* kill scrollbars from hell */
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <script>
+      var a = document.getElementsByTagName('canvas')[0];
+      var b = document.body;
+      var d = function(e){ return function(){ e.parentNode.removeChild(e); }; }(a);
+      // unprefix some popular vendor prefixed things (but stick to their original name)
+      var AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+      var requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(f){ setInterval(f, 1000/30); };
+      // stretch canvas to screen size (once, wont onresize!)
+      a.style.width = (a.width = innerWidth) + 'px';
+      a.style.height = (a.height = innerHeight) + 'px';
+
+      var c = a.getContext('2d');
+    </script>
+    <script>
+/*
+ keys:
+ i = some number
+ j = some other number
+ k = another number
+ h = innerHeight
+ r = random
+ u = 50
+ w = innerWidth
+ v = step size
+ x = 10
+ y = 20
+ z = 97
+ A = starX
+ B = starY
+ C = bound
+ D = draw
+ E = dragonFunction
+ F = fill
+ G = beginPath
+ H = closePath
+ I = fillRect
+ J = fillStyle
+ K = lineTo
+ L = moveTo
+ M = Math
+ N = MoveStar
+ Q = Math.sin
+ R = random
+ S = score
+ T = theta
+ W = walls
+ X = dragonX
+ Y = dragonY
+*/
+// start of submission //
+h=innerHeight,w=innerWidth,i=T=0,v=8,S=0,X=200,Y=h/2,W=[],M=Math,u=50,x=10,y=20,z=97,F="fill",I=F+"Rect",J=F+"Style",G="beginPath",H="closePath",K="lineTo",L="moveTo",R=Math.random,Q=M.sin
+function N(){A=w,B=R()*h}N()
+for(;i++<X;W.push(R()*z+y));setInterval(function(){W.push(W.shift());T++;A-=v;
+(X<A+x&&X>A-x&&Y<B+y&&Y>B-y)&&(++S,N())
+A<0 && N()},z)
+function C(n,a,b){return M.max(M.min(a,n),b)}function E(i,j,r){c[G]()
+c.arc(X-i,Y-j,r,0,6)
+c[H]()
+c[F]()}(function D(){k=Q(T)
+X=C(X,w,0)
+Y=C(Y,h,0)
+c[J]="#000"
+c[I](0,0,w,h)
+c[J]="#333"
+for(i=0;i++<z;j=W[i],c[I](i*y,h-j,y,j));c[J]="#A00"
+for(i=0;i++<y;E(i*x,Q(T+i)*x,15-i/2));c[G]()
+c[L](X,Y-x*k)
+c[K](X-x,Y-u)
+c[K](X+u,Y+y)
+c[K](X,Y-x*k)
+c[H]()
+c[L](X-x,Y)
+c[K](X-z,Y+u*k)
+c[K](X-u,Y)
+c[K](X,Y)
+c[H]()
+c[F]()
+c[J]="#AA0"
+E(-x,k+x,2)
+c[G]()
+c.arc(A,B,x,0,6)
+c[F]()
+c.fillText("score: "+S,x,y)
+requestAnimationFrame(D)})()
+c.font="20px X"
+b.onkeydown=function(e){j=e.keyCode
+j==65&&(X-=v)
+j==68&&(X+=v)
+j==83&&(Y+=v)
+j==87&&(Y-=v)}
+// end of submission //
+    </script>
+  </body>
+</html>
