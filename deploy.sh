@@ -1,1 +1,1 @@
-aws s3 sync ./ s3://www.sugendran.com/
+aws s3 sync ./ s3://www.sugendran.com/ --exclude ".git/*" --exclude "deploy.sh"
