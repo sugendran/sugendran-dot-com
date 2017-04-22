@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/sugendran
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://sugendran.com
+  * I am sugendran (https://keybase.io/sugendran) on keybase.
+  * I have a public key with fingerprint D3B1 FA86 D98B 978E 463C  7FD8 822B F48E AD45 57C9
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "d3b1fa86d98b978e463c7fd8822bf48ead4557c9",
+            "host": "keybase.io",
+            "key_id": "822bf48ead4557c9",
+            "uid": "bb44b7d77ad4d75c247d33603a380b00",
+            "username": "sugendran"
+        },
+        "service": {
+            "hostname": "sugendran.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1413388214,
+    "expire_in": 157680000,
+    "prev": "8e7f40ffb4fbd0bfcac976abf6a7c5e4b2c8501f8c66dca50d6bcf90c468977c",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.1.3
+Comment: https://keybase.io/crypto
+
+yMHiAnicbZFbSBRRGMd31bTWNElCi3yZlyAWnd25nNntZsgGQSqpEV5omXOZdSpn
+1tnZXU0tXHxZIqNMM0wJyYyiiA3DssJLSKJG+lIJoUGk4Qo99BAo2ozUS3ReDuf7
+fv//d/58b9ISLTbrds9QYnNjabt1cvhn0FJ2+OazBgqquJ5yN1DnyOYlyYqPaH5N
+VnTKTWEGOiRR4LFLgC4gEJZnEJCwIDidUGIFImKW4wByUXaqWg2YCsMGigGSK6tG
+zXh4ZWxU/8MHNxsQsiwEGACjgwGHnCzADMPTjMgINKRpEwwQTRFriEEHgj6iYE1U
+qCY7ZZRDMiLmp83Z/yK5SK0x1H5N1VWknjda1bruD7hNqV7vN9kwgd4/Ll4oK9iI
+bihCRAvIqkK5HQaJdNm0dbAOhjFSO1g7Rer8ska8sklwgBdo45hzSMgMSoDE0pIE
+WQliGkpIRC7Ai1DiRYA4wkInEjjaIQmI5zESORrzEEkuGrG84AIAUWauWkWl3MYk
+XfSZiWSfIupBjVBNo8NVSRarzZK8JcFcnsW2LePvSsenUzYqPIO2vsWElolIz2Lu
+6tKVC9lfU32LSa0nVmb3iP2f7909+6Xu4r6cWs/89UNllXo8mlGVXpjvuNHheRH7
+eLLQkzTYSfcdjUb0lab1rph1qH1HdK74jqukYuZ5eYl9veSb/zKO9iwHF16Oc8ts
+Vwj+iEcl0DnyqZpOffyutHukKNLdfO3+o9dtvWz6+91rk/NL8eS3vojyIX0iXPDU
+t7ZSmXem6LSS37HrwLh1ofFU+aXog4HM4kZ/3mhroH/2dvF0rHcs50iYPFlt2z/3
+cO+tlOze8K+yWXfWq6lY1sLYFN654SalaVdjwth3Lj40UHBc6Gw5OLO1jq49lsn8
+BhTJGGI=
+=wOHK
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/sugendran
+
+==================================================================
+

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yammer Event Recordings</title>
+    <meta name="description" content="yammer platform video wall">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+    <style>
+      html {
+        font-family: "Helvetica", "Arial", sans-serif;
+        min-height: 100%;
+        /* background from colorzilla http://www.colorzilla.com/gradient-editor/ */
+        background: #ffffff; /* Old browsers */
+        background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+      }
+      h1 {
+        font-size: 1.6em;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: #CCC;
+        text-align: center;
+        display: block;
+        font-family: "Chalkduster", "Chalkboard","Comic-Sans MS", sans-serif;
+        /* text shadow from http://css3generator.com/ */
+        text-shadow: 0px -1px 2px #ededed;
+      }
+      #content {
+        width: 800px;
+        display: block;
+        margin: 0px auto;
+      }
+      .loading {
+        min-height: 20px;
+        background: transparent url(data:image/gif;base64,R0lGODlhEAALAPQAAP///yomJt/f39fW1u3s7C8rKyomJlBNTZaUlHp3d8XExEZCQmdkZJ2bm317e8jHx0lGRi0pKWtoaOnp6d7d3fX19VhVVeHh4fPz88HAwK+urtLR0fDw8AAAAAAAAAAAACH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAALAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQACwABACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQACwACACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQACwADACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAALAAQALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkEAAsABQAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAALAAYALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkEAAsABwAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7AAAAAAAAAAAA) no-repeat 50% 50%;
+      }
+      .loading a {
+        display: none;
+      }
+      .box {
+        width: 238px;
+        background: #333;
+        border: 4px solid #666;
+        padding: 6px;
+        margin-bottom: 10px;
+        /* border radius creator: http://border-radius.com/ */
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+      }
+      .box a {
+        text-decoration: none;
+        color: #222;
+        display: block;
+        background: #333;
+        color: #EEE;
+        padding: 4px;
+        letter-spacing: 2px;
+      }
+      .box a:hover {
+        color: #FFF;
+      }
+      .box .image img {
+        width: 230px;
+      }
+      .box .link-back {
+        font-size: 0.7em;
+        text-align: right;
+      }
+      #page-nav {
+        text-align: center;
+        width: 230px;
+        margin: 10px auto 20px;
+        padding: 8px 20px;
+        border: 1px solid #DDD;
+      }
+      #page-nav a {
+        color: #222;
+        text-decoration: none;
+      }
+      #page-nav a:hover {
+        color: #DDD;
+      }
+      /**** Transitions ****/
+
+      .masonry,
+      .masonry .masonry-brick {
+        -webkit-transition-duration: 0.7s;
+           -moz-transition-duration: 0.7s;
+            -ms-transition-duration: 0.7s;
+             -o-transition-duration: 0.7s;
+                transition-duration: 0.7s;
+      }
+
+      .masonry {
+        -webkit-transition-property: height, width;
+           -moz-transition-property: height, width;
+            -ms-transition-property: height, width;
+             -o-transition-property: height, width;
+                transition-property: height, width;
+      }
+
+      .masonry .masonry-brick {
+        -webkit-transition-property: left, right, top;
+           -moz-transition-property: left, right, top;
+            -ms-transition-property: left, right, top;
+             -o-transition-property: left, right, top;
+                transition-property: left, right, top;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Yammer Event Recordings</h1>
+    <div id="content">
+    </div>
+    <nav id="page-nav" class="loading">
+      <a href="javascript:loadMoreMessages();">Load More</a>
+    </nav>
+    <script data-app-id="UbraBtzQvLj5Q8u9RXfviw" src="https://www.yammer.com/platform/yam.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
+    <script>
+      // Group ID for the Yammer Event Recordings group
+      var groupId = 1425030;
+      // making this a variable so that we can point at staging easily
+      var baseUrl = "https://www.yammer.com/api/v1/";
+      // we use this to track where in the feed we're up to
+      var lastID = Infinity;
+      // this is track if there are more messages available
+      var canGetMore = true;
+
+      /// UI code
+      $(function(){
+        $("#content").masonry({
+          itemSelector: '.box',
+          columnWidth: 260,
+          gutterWidth: 10
+        });
+      })
+
+      function drawFailure(msg) {
+        $("#content").attr("class", "failed").html("<h2>" + msg + "</h2>");
+      }
+
+      function itemHtml(item) {
+        var html = [
+          '<div class="box">',
+            '<a href="', item.url, '" class="title">',
+              item.name,
+            '</a>',
+            '<a href="', item.url, '" class="image">',
+              '<img src="', item.thumb, '" />',
+            '</a>',
+            '<a href="', item.url, '" class="link-back">',
+              "See on yammer &raquo;",
+            '</a>',
+          '</div>'
+        ];
+        return html.join('');
+      }
+
+      function appendNewItems(items) {
+        var html = [];
+        for(var i=0, ii=items.length; i<ii; i++) {
+          html.push(itemHtml(items[i]));
+        }
+        var boxes = $(html.join(""));
+        var container = $("#content");
+        container.append(boxes);
+        boxes.imagesLoaded(function(){
+          container.masonry('appended', boxes);
+        });
+      }
+
+      /// Data loading section
+      function processNewMessages(messages) {
+        var newItems = [];
+        for(var i=0, ii=messages.length; i<ii; i++) {
+          var message = messages[i];
+          // keep track of the last message we know about
+          lastID = Math.min(lastID, message.id);
+          // only care about messages with attachments
+          if(message.attachments.length === 0) {
+            continue;
+          }
+
+          for(var j=0, jj=message.attachments.length; j<jj; j++) {
+            var attachment = message.attachments[j];
+            // only care about video attachments
+            if(attachment.content_class !== "Video") {
+              continue;
+            }
+            // we don't care about the whole object so just strip out the
+            // info we need to render it
+            newItems.push({
+              url: message.web_url,
+              stream: attachment.streaming_url,
+              thumb: attachment.thumbnail_url,
+              name: attachment.name
+            });
+          }
+        }
+        console.log(newItems);
+        if(newItems.length > 0) {
+          appendNewItems(newItems);
+        }
+      }
+
+      function loadMoreMessages() {
+        $("#page-nav").addClass("loading");
+        // build the URL to call the API with
+        var url = baseUrl + "messages/in_group/" + groupId + ".json";
+        // after the first request we need to append the id of the last
+        // requested message so taht we can page
+        if(lastID !== Infinity) {
+          url += "?older_than=" + lastID;
+        }
+        // make the request
+        yam.request({
+          url: url,
+          method: "GET",
+          success: function (response) {
+            // print the api request response information to the console
+            console.log(response);
+            canGetMore = response.meta.older_available;
+            processNewMessages(response.messages);
+            $(".loading").removeClass("loading");
+            if(!canGetMore) {
+              $("#page-nav").hide();
+            }
+          },
+          error: function (response) {
+            drawFailure("The was an error with the request.");
+          }
+        });
+      }
+
+      /// Application login code
+
+      // put the code for your app here. It will be called once the user is logged in
+      function startApplication() {
+        loadMoreMessages();
+      }
+
+      // this gets called if the user denies the app
+      function loginFailed() {
+        drawFailure("Login Required");
+      }
+
+      // this is bolier plate for logging in with yammer. you can ignore it
+      yam.getLoginStatus(function(response) {
+          //window.$ = yam.$;
+          if (response.authResponse) {
+            startApplication();
+          } else {
+            //prompt user to login and authorize your app, as necessary
+            yam.login(function (response) {
+              if (response.authResponse) {
+                // they gave us permission
+                startApplication();
+              } else {
+                // failed!
+                loginFailed();
+              }
+            });
+          }
+        }
+      );
+
+    </script>
+  </body>
+</html>
