@@ -1,0 +1,118 @@
+/*
+	Base style sheet for use with blogs on http://www.abandonedexpression.com/ 
+	-- Sugendran [June 2009]
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+/* simple styles go here */
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.4em; }
+a, a:active, a:focus, a:visited {
+	text-decoration: none;
+	color: #666;
+}
+a:hover{
+	text-decoration: underline;
+}
+html,body{
+	height: 100%;
+}
+body{
+	background: #CCC url(images/background.png) no-repeat center top;
+	color: #111;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 90%;
+}
+.container{
+	width: 980px;
+	margin: 0px auto;
+}
+.container .header{
+	color: #F7F7F7;
+	height: 110px;
+}
+.container .header h1{
+	font-size: 1.8em;
+	padding: 16px 0px 0px 0px;
+}
+.container .body{
+}
+.container .body .main{
+	width: 680px;
+	float: left;
+	padding-right: 10px;
+}
+.container .body .main p{
+	padding: 6px 8px;
+}
+.container .body .sidebar{
+	width: 280px;
+	float: left;
+}
+.container .body .sidebar .box{
+	padding: 20px;
+	margin-bottom: 8px;
+	background-color: #EEE;
+	border: 1px solid #666;
+}
+.container .footer{
+}
+.container .body .code{
+	overflow-y: scroll;
+	width: 600px;
+	margin: 10px auto;
+	background: #EEE;
+	color: #333;
+	border: 1px solid black;
+	padding: 3px;
+}
